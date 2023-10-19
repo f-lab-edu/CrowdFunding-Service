@@ -1,12 +1,11 @@
 package crowdfunding.crowdfunding.dto;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Data
-public class UserDTO {
+public class CreateUserDTO {
     @NotEmpty(message = "아이디를 입력하세요.")
     private String id;
     @NotEmpty(message = "비밀번호를 입력하세요")

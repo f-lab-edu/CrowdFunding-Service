@@ -1,6 +1,6 @@
 package crowdfunding.crowdfunding.service;
 
-import crowdfunding.crowdfunding.dto.UserDTO;
+import crowdfunding.crowdfunding.dto.LoginDTO;
 import crowdfunding.crowdfunding.repository.mybatis.MybatisUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 public class LoginValid {
     private final MybatisUser mybatisUser;
 
-    public UserDTO login(String id, String password){
-        mybatisUser.
+    public String loginValid(LoginDTO loginDTO){
+        //String login = mybatisUser.findUserId(loginDTO);
+        return mybatisUser.findUserId(loginDTO);
+
     }
 }

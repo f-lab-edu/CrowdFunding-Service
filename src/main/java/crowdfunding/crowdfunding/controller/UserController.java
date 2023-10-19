@@ -1,8 +1,10 @@
 package crowdfunding.crowdfunding.controller;
 
 import crowdfunding.crowdfunding.repository.mybatis.MybatisUser;
-import crowdfunding.crowdfunding.dto.UserDTO;
+import crowdfunding.crowdfunding.dto.CreateUserDTO;
 import crowdfunding.crowdfunding.service.UserValid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,29 +23,24 @@ public class UserController {
 
     private final MybatisUser mybatisUser;
     @GetMapping("/created")
-    public String createId(@ModelAttribute UserDTO userDTO){
+    public String createId(@ModelAttribute CreateUserDTO createUserDTO){
         return "userview/createid";
     }
 
     @PostMapping("/created")
-    public String userValid(@Valid @ModelAttribute UserDTO userDTO, BindingResult bindingResult){
+    public String userValid(@Valid @ModelAttribute CreateUserDTO createUserDTO, BindingResult bindingResult,
+                            HttpServletRequest httpServletRequest){
 
         UserValid pass = new UserValid();
 
-        if(!pass.passwordValid(userDTO.getPassword(),userDTO.getPasswordValid())){
+        if(!pass.passwordValid(createUserDTO.getPassword(), createUserDTO.getPasswordValid())){
             bindingResult.reject("passwordFail","비밀번호가 일치하지 않습니다.");
             log.info("비밀번호 불일치");
         }
-
-
         if(bindingResult.hasErrors()){
             return "userview/createid";
         }
-
-
-
-
-        mybatisUser.userSave(userDTO);
+        mybatisUser.userSave(createUserDTO);
         return "redirect:/";
     }
 
