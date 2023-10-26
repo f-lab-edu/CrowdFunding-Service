@@ -12,39 +12,22 @@
 </head>
 <body>
 
-<form th:action th:object="${createUserDTO}" method="post">
+<form th:action th:object="${itemDTO}" method="post">
     <div>
-        <input type="text" th:field="*{id}" th:text="아이디">
-        <p th:errors="*{id}"></p>
-        <button th:onclick="|location.href='@{/}'|">중복체크</button>
-    </div>
-    <div>
-        비밀번호<input type="password" th:field="*{password}">
-        <p th:errors="*{password}"></p>
+        <label for="itemtitle">프로젝트명</label>
+        <input type="text" id="itemtitle" th:field="*{itemTitle}" >
+        <p th:errors="*{itemTitle}"></p>
     </div>
     <div>
-        비밀번호 재확인<input type="password" th:field="*{passwordValid}">
-        <p th:errors="*{passwordValid}"></p>
-    </div>
-
-    <div th:if="${#fields.hasGlobalErrors()}">
-        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
-    </div>
-
-    <div>
-        이름<input type="text" th:field="*{userName}">
-        <p th:errors="*{userName}"></p>
+        이미지첨부<input type="file" name="file">
     </div>
     <div>
-        전화번호<input type="text" th:field="*{tel}">
-        <p th:errors="*{tel}"></p>
+        <label for="itemcontent">내용</label>
+        <input type="text" id="itemcontent" th:field="*{itemContent}">
+        <p th:errors="*{itemContent}"></p>
     </div>
-    <div>
-        이메일<input type="text" th:field="*{email}">
-        <p th:errors="*{email}"></p>
-    </div>
-    <button>회원가입</button>
+    <button>프로젝트 등록</button>
 </form>
-
+<button th:onclick="|location.href='@{/}'|">취소</button>
 </body>
 </html>
