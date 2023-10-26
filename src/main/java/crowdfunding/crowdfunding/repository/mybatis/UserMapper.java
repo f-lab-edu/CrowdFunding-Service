@@ -10,7 +10,9 @@ public interface UserMapper {
 
     void userSave(CreateUserDTO createUserDTO);
 
-    String findUserId(@Param("id") String id, @Param("password") String password);
+    //String findUserId(@Param("id") String id, @Param("password") String password);
+    String findUserId(LoginDTO loginDTO);
+
 
     //public UserDTO userlist(UserDTO userDTO);
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -46,18 +47,19 @@ public class LoginController {
         HttpSession httpSession = httpServletRequest.getSession(true);
         httpSession.setMaxInactiveInterval(1200);
         httpSession.setAttribute("loginSession",loginStart);
-        log.info("session timeout = "+httpSession.getMaxInactiveInterval());
+        log.info("session timeout = {}",httpSession.getMaxInactiveInterval());
 
-        return "redirect:/front";
+        return "redirect:/";
     }
 
 
     @PostMapping("/logout")
-    public String logout(HttpServletRequest httpServletRequest){
-        HttpSession httpSession = httpServletRequest.getSession(false);
-        if(httpSession != null){
-            httpSession.invalidate();
-        }
+    public String logout(HttpServletRequest httpServletRequest) {
+            HttpSession httpSession = httpServletRequest.getSession(false);
+            if (httpSession != null) {
+                log.info("{} logout",httpSession.getAttribute("loginSession"));
+                httpSession.invalidate();
+            }
 
         return "redirect:/";
     }

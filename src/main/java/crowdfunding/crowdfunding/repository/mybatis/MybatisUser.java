@@ -24,7 +24,9 @@ public class MybatisUser implements UserRepository {
 
     @Override
     public String findUserId(LoginDTO loginDTO){
-        return userMapper.findUserId(loginDTO.getId(), loginDTO.getPassword());
+
+
+        return userMapper.findUserId(loginDTO);
     }
 }
 
