@@ -12,13 +12,15 @@
             <p th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
         </div>
         <div>
-            ID <input type="text" th:field="*{id}">
+            <label for="id">ID</label>
+            <input type="text" id="id" th:field="*{id}">
         </div>
         <div>
             <p th:errors="*{id}"></p>
         </div>
         <div>
-            패스워드 <input type="password" th:field="*{password}">
+            <label for="password">패스워드</label>
+            패스워드 <input type="password" id="password" th:field="*{password}">
         </div>
         <div>
             <p th:errors="*{password}"></p>

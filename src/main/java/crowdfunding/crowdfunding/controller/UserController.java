@@ -40,7 +40,7 @@ public class UserController {
         if(bindingResult.hasErrors()){
             return "userview/createid";
         }
-        System.out.println(createUserDTO);
+        log.info("createUser = {}",createUserDTO);
         mybatisUser.userSave(createUserDTO);
         return "redirect:/";
     }
