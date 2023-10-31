@@ -4,14 +4,15 @@
 
 <mapper namespace="crowdfunding.crowdfunding.repository.mybatis.UserMapper">
     
-    <insert id="userSave">
+    <insert id="userSave" parameterType="createUserDTO">
         insert into user (user_id, user_password, user_name, user_tel, user_email, user_create_date)
         values (#{id}, #{password}, #{userName}, #{tel}, #{email}, now())
     </insert>
-    <select id="findUserId">
-        select user_id, user_password
+    <select id="findByUserId" parameterType="loginDTO" resultType="loginDTO">
+        select *
         from user
         where user_id=#{id} and user_password=#{password}
     </select>
+
 </mapper>
 

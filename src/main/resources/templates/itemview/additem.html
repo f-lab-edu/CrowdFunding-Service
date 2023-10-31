@@ -14,17 +14,27 @@
 
 <form th:action th:object="${itemDTO}" method="post">
     <div>
-        <label for="itemtitle">프로젝트명</label>
-        <input type="text" id="itemtitle" th:field="*{itemTitle}" >
+        <label for="itemtitle">프로젝트명</label><br>
+        <textarea id="itemtitle"  cols="55" rows="2" maxlength="100" th:field="*{itemTitle}"/>
         <p th:errors="*{itemTitle}"></p>
     </div>
     <div>
         이미지첨부<input type="file" name="file">
     </div>
     <div>
-        <label for="itemcontent">내용</label>
-        <input type="text" id="itemcontent" th:field="*{itemContent}">
+        <label for="itemcontent">내용</label><br>
+        <textarea id="itemcontent" cols="55" rows="10" th:field="*{itemContent}"/>
         <p th:errors="*{itemContent}"></p>
+    </div>
+    <div>
+        <label for="targetamount">목표금액</label><br>
+        <input type="tel" id="targetamount" th:field="*{targetAmount}"/>
+        <p th:errors="*{itemTitle}"></p>
+    </div>
+    <div>
+        <label for="targetamount">폭표기간</label><br>
+        <input type="tel" th:field="*{targetAmount}"/>
+        <p th:errors="*{itemTitle}"></p>
     </div>
     <button>프로젝트 등록</button>
 </form>

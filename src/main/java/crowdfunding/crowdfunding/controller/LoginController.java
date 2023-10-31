@@ -2,7 +2,7 @@ package crowdfunding.crowdfunding.controller;
 
 
 import crowdfunding.crowdfunding.dto.LoginDTO;
-import crowdfunding.crowdfunding.service.LoginValid;
+import crowdfunding.crowdfunding.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class LoginController {
 
-    private final LoginValid loginValid;
+    private final LoginService loginService;
     @GetMapping("/login")
     public String login(@ModelAttribute LoginDTO loginDTO){
         return "userview/login";
@@ -32,7 +32,7 @@ public class LoginController {
     public String loginValid(@Valid @ModelAttribute LoginDTO loginDTO, BindingResult bindingResult,
                              HttpServletRequest httpServletRequest) {
 
-         String loginStart = loginValid.loginValid(loginDTO);
+        LoginDTO loginStart = loginService.loginValid(loginDTO);
          log.info("LoginCheck = {}",loginStart);
 
          if(loginStart == null){

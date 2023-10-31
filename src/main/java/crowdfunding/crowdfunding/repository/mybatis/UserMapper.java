@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
 
     void userSave(CreateUserDTO createUserDTO);
-    String findUserId(LoginDTO loginDTO);
+    LoginDTO findByUserId(LoginDTO loginDTO);
 }
