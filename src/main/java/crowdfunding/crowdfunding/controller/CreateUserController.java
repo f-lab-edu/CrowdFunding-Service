@@ -1,6 +1,6 @@
 package crowdfunding.crowdfunding.controller;
 
-import crowdfunding.crowdfunding.repository.mybatis.UserDAO;
+import crowdfunding.crowdfunding.repository.user.UserDAO;
 import crowdfunding.crowdfunding.dto.CreateUserDTO;
 import crowdfunding.crowdfunding.ConfirmPassword;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,12 +27,11 @@ public class CreateUserController {
     }
 
     @PostMapping("/created")
-    public String userValid(@Valid @ModelAttribute CreateUserDTO createUserDTO, BindingResult bindingResult,
-                            HttpServletRequest httpServletRequest){
+    public String userValid(@Valid @ModelAttribute CreateUserDTO createUserDTO, BindingResult bindingResult){
 
         ConfirmPassword confirmPassword = new ConfirmPassword();
 
-        if(!confirmPassword.passwordValid(createUserDTO.getPassword(), createUserDTO.getPasswordValid())){
+        if(!confirmPassword.passwordValid(createUserDTO.getUserPassword(), createUserDTO.getPasswordValid())){
             bindingResult.reject("passwordFail","비밀번호가 일치하지 않습니다.");
             log.info("비밀번호 불일치");
         }

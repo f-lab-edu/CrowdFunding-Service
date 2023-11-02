@@ -1,4 +1,4 @@
-package crowdfunding.crowdfunding.repository.mybatis;
+package crowdfunding.crowdfunding.repository.user;
 
 import crowdfunding.crowdfunding.dto.CreateUserDTO;
 import crowdfunding.crowdfunding.dto.LoginDTO;

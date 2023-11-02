@@ -16,16 +16,16 @@
     <form th:action th:object="${createUserDTO}" method="post">
         <div>
             <label for="id">아이디</label>
-            <input type="text" id="id" th:field="*{id}">
-            <p th:errors="*{id}"></p>
+            <input type="text" id="id" th:field="*{userId}">
+            <p th:errors="*{userId}"></p>
 
             <button>중복체크</button>
         </div>
 
         <div>
             <label for="password">비밀번호</label>
-            <input type="password" id="password" th:field="*{password}">
-            <p th:errors="*{password}"></p>
+            <input type="password" id="password" th:field="*{userPassword}">
+            <p th:errors="*{userPassword}"></p>
         </div>
         <div>
             <label for="passwordvalid">비밀번호 재확인</label>

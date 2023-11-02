@@ -1,6 +1,7 @@
 package crowdfunding.crowdfunding.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.math.BigInteger;
@@ -16,8 +17,8 @@ public class ItemDTO {
     private String itemTitle;
     @NotEmpty(message = "내용을 입력하세요.")
     private String itemContent;
-    @NotEmpty(message = "목표금액을 설정하셔야합니다.")
+    @NotNull(message = "목표금액을 설정하셔야합니다.")
     private BigInteger targetAmount;
-    @NotEmpty(message = "목표기간을 설정하셔야합니다.")
+    @NotNull(message = "목표기간을 설정하셔야합니다.")
     private LocalDate targetPeriod;
 }

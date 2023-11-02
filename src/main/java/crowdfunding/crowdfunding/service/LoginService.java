@@ -1,7 +1,7 @@
 package crowdfunding.crowdfunding.service;
 
 import crowdfunding.crowdfunding.dto.LoginDTO;
-import crowdfunding.crowdfunding.repository.mybatis.UserDAO;
+import crowdfunding.crowdfunding.repository.user.UserDAO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

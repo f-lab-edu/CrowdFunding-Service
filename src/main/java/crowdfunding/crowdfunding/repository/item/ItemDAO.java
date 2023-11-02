@@ -1,4 +1,4 @@
-package crowdfunding.crowdfunding.repository.mybatis;
+package crowdfunding.crowdfunding.repository.item;
 
 import crowdfunding.crowdfunding.dto.ItemDTO;
 import lombok.RequiredArgsConstructor;

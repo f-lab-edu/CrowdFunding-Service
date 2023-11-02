@@ -13,17 +13,17 @@
         </div>
         <div>
             <label for="id">ID</label>
-            <input type="text" id="id" th:field="*{id}">
+            <input type="text" id="id" th:field="*{userId}">
         </div>
         <div>
-            <p th:errors="*{id}"></p>
+            <p th:errors="*{userId}"></p>
         </div>
         <div>
             <label for="password">패스워드</label>
-            <input type="password" id="password" th:field="*{password}">
+            <input type="password" id="password" th:field="*{userPassword}">
         </div>
         <div>
-            <p th:errors="*{password}"></p>
+            <p th:errors="*{userPassword}"></p>
         </div>
         <button type="submit">로그인</button>
     </form>

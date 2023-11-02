@@ -2,11 +2,12 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="crowdfunding.crowdfunding.repository.mybatis.ItemMapper">
+<mapper namespace="crowdfunding.crowdfunding.repository.item.ItemMapper">
 
     <insert id="itemSave">
         insert into item (item_num, maker_id,item_title,item_content,create_date,target_amount,target_period)
         values (#{itemNum}, #{makerId}, #{itemTitle}, #{itemContent}, #{createDate}, #{targetAmount}, #{targetPeriod})
     </insert>
+
 </mapper>
 

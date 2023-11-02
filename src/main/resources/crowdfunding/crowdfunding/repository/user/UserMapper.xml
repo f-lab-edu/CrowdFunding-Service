@@ -2,16 +2,16 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="crowdfunding.crowdfunding.repository.mybatis.UserMapper">
+<mapper namespace="crowdfunding.crowdfunding.repository.user.UserMapper">
     
     <insert id="userSave" parameterType="createUserDTO">
         insert into user (user_id, user_password, user_name, user_tel, user_email, user_create_date)
-        values (#{id}, #{password}, #{userName}, #{tel}, #{email}, now())
+        values (#{userId}, #{userPassword}, #{userName}, #{tel}, #{email}, now())
     </insert>
     <select id="findByUserId" parameterType="loginDTO" resultType="loginDTO">
         select *
         from user
-        where user_id=#{id} and user_password=#{password}
+        where user_id=#{userId} and user_password=#{userPassword}
     </select>
 
 </mapper>
