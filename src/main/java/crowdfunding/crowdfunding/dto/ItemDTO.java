@@ -19,6 +19,6 @@ public class ItemDTO {
     private String itemContent;
     @NotNull(message = "목표금액을 설정하셔야합니다.")
     private BigInteger targetAmount;
-    @NotNull(message = "목표기간을 설정하셔야합니다.")
+    //@NotNull(message = "목표기간을 설정하셔야합니다.")
     private LocalDate targetPeriod;
 }

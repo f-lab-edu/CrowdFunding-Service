@@ -16,6 +16,7 @@
 </head>
 <body>
 <form th:action th:object="${itemDTO}" method="post">
+    <input type="hidden">
     <div>
         <label for="itemtitle">프로젝트명</label><br>
         <textarea id="itemtitle"  cols="55" rows="2" maxlength="100" th:field="*{itemTitle}"/>
