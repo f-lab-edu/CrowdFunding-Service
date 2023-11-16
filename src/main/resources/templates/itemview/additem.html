@@ -2,12 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <style>
-        .align-left { text-align: left; }
-        .align-center { text-align: center; }
-        .align-right { text-align: right; }
-        .align-justify { text-align: justify; }
-    </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,13 +11,14 @@
 <body>
 <form th:action th:object="${itemDTO}" method="post">
     <input type="hidden">
+
     <div>
         <label for="itemtitle">프로젝트명</label><br>
         <textarea id="itemtitle"  cols="55" rows="2" maxlength="100" th:field="*{itemTitle}"/>
         <p th:errors="*{itemTitle}"></p>
     </div>
     <div>
-        이미지첨부<input type="file" name="file">
+        이미지첨부<input type="file" multiple="multiple">
     </div>
     <div>
         <label for="itemcontent">내용</label><br>

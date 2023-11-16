@@ -6,7 +6,7 @@
     
     <insert id="userSave" parameterType="createUserDTO">
         insert into user (user_id, user_password, user_name, user_tel, user_email, user_create_date)
-        values (#{userId}, #{userPassword}, #{userName}, #{tel}, #{email}, now())
+        values (#{userId}, #{userPassword}, #{userName}, #{userTel}, #{userEmail}, now())
     </insert>
     <select id="findByUserId" parameterType="loginDTO" resultType="loginDTO">
         select *
