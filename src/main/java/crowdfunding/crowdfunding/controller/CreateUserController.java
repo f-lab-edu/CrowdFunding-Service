@@ -1,9 +1,9 @@
 package crowdfunding.crowdfunding.controller;
 
-import crowdfunding.crowdfunding.repository.user.UserDAO;
+
 import crowdfunding.crowdfunding.dto.CreateUserDTO;
 import crowdfunding.crowdfunding.ConfirmPassword;
-import jakarta.servlet.http.HttpServletRequest;
+import crowdfunding.crowdfunding.service.CreateUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/user")
 public class CreateUserController {
-
-    private final UserDAO userDAO;
+    private final CreateUserService createUserService;
     @GetMapping("/created")
     public String createId(@ModelAttribute CreateUserDTO createUserDTO){
         return "userview/createid";
@@ -39,7 +38,7 @@ public class CreateUserController {
             return "userview/createid";
         }
         log.info("createUser = {}",createUserDTO);
-        userDAO.userSave(createUserDTO);
+        createUserService.createUser(createUserDTO);
         return "redirect:/";
     }
 

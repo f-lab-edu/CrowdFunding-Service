@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class ItemDTO {
     private int itemNum;
     private String makerId;
+
     private LocalDateTime createDate;
     @NotEmpty(message = "제목은 입력하셔야합니다.")
     private String itemTitle;
@@ -21,4 +22,6 @@ public class ItemDTO {
     private BigInteger targetAmount;
     //@NotNull(message = "목표기간을 설정하셔야합니다.")
     private LocalDate targetPeriod;
+
+
 }

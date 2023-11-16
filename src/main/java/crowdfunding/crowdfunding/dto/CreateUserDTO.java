@@ -16,8 +16,8 @@ public class CreateUserDTO {
     @NotEmpty(message = "이름을 입력하세요.")
     private String userName;
     @NotEmpty(message = "전화번호를 입력하세요.")
-    private String tel;
+    private String userTel;
     @NotEmpty(message = "이메일을 입력하세요")
-    private String email;
+    private String userEmail;
 
 }

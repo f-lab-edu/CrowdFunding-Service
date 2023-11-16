@@ -2,12 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <style>
-        .align-left { text-align: left; }
-        .align-center { text-align: center; }
-        .align-right { text-align: right; }
-        .align-justify { text-align: justify; }
-    </style>
     <title>회원가입</title>
 </head>
 <body>
@@ -45,13 +39,13 @@
         </div>
         <div>
             <label for="tel">전화번호</label>
-            <input type="text" id="tel" th:field="*{tel}">
-            <p th:errors="*{tel}"></p>
+            <input type="text" id="tel" th:field="*{userTel}">
+            <p th:errors="*{userTel}"></p>
         </div>
         <div>
             <label for="email">이메일</label>
-            <input type="text" id="email" th:field="*{email}">
-            <p th:errors="*{email}"></p>
+            <input type="text" id="email" th:field="*{userEmail}">
+            <p th:errors="*{userEmail}"></p>
         </div>
             <button>회원가입</button>
     </form>

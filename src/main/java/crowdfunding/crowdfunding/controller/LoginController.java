@@ -1,6 +1,7 @@
 package crowdfunding.crowdfunding.controller;
 
 
+import crowdfunding.crowdfunding.SessionName;
 import crowdfunding.crowdfunding.dto.LoginDTO;
 import crowdfunding.crowdfunding.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,7 +31,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginValid(@Valid @ModelAttribute LoginDTO loginDTO, BindingResult bindingResult,
-                             HttpServletRequest httpServletRequest) {
+                             Model model, HttpServletRequest httpServletRequest) {
 
         LoginDTO loginStart = loginService.loginValid(loginDTO);
          log.info("LoginCheck = {}",loginStart);
@@ -45,9 +47,9 @@ public class LoginController {
 
         HttpSession httpSession = httpServletRequest.getSession(true);
         httpSession.setMaxInactiveInterval(1200);
-        httpSession.setAttribute("loginSession",loginStart);
-        log.info("session timeout = {}",httpSession.getMaxInactiveInterval());
+        httpSession.setAttribute(SessionName.LOGIN,loginStart.getUserId());
 
+        log.info("session timeout = {}",httpSession.getMaxInactiveInterval());
         return "redirect:/";
     }
 

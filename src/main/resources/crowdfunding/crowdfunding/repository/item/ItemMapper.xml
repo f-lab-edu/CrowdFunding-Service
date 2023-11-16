@@ -5,8 +5,8 @@
 <mapper namespace="crowdfunding.crowdfunding.repository.item.ItemMapper">
 
     <insert id="itemSave">
-        insert into item (item_num, maker_id,item_title,item_content,create_date,target_amount,target_period)
-        values (#{itemNum}, #{makerId}, #{itemTitle}, #{itemContent}, #{createDate}, #{targetAmount}, #{targetPeriod})
+        insert into item (maker_id,item_title,item_content,create_date,target_amount,target_period)
+        values (#{makerId}, #{itemTitle}, #{itemContent}, now(), #{targetAmount}, #{targetPeriod})
     </insert>
 
 </mapper>
