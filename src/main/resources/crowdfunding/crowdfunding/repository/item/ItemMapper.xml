@@ -4,10 +4,14 @@
 
 <mapper namespace="crowdfunding.crowdfunding.repository.item.ItemMapper">
 
-    <insert id="itemSave">
+    <insert id="itemSave" useGeneratedKeys="true" keyProperty="itemNum" keyColumn="item_num" parameterType="ItemDTO">
         insert into item (maker_id,item_title,item_content,create_date,target_amount,target_period)
         values (#{makerId}, #{itemTitle}, #{itemContent}, now(), #{targetAmount}, #{targetPeriod})
     </insert>
 
+    <insert id="itemImageSave">
+        insert into item_image(item_num,item_image_name,image_attach_date)
+        values (#{itemNum}, #{itemImageName}, now())
+    </insert>
 </mapper>
 

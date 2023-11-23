@@ -1,5 +1,6 @@
 package crowdfunding.crowdfunding.controller;
 
+import crowdfunding.crowdfunding.ItemImageStorage;
 import crowdfunding.crowdfunding.SessionName;
 import crowdfunding.crowdfunding.dto.CreateUserDTO;
 import crowdfunding.crowdfunding.dto.ItemDTO;
@@ -20,12 +21,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.IOException;
+import java.util.List;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/item")
 public class ItemController {
     private final AddItemService addItemService;
+    private final ItemImageStorage itemImageStorage;
     @GetMapping("/add")
     public String addItem(@ModelAttribute ItemDTO itemDTO){
         return "itemview/additem";
@@ -33,7 +38,7 @@ public class ItemController {
 
     @PostMapping("/add")
     public String addItemComplete(@Valid @ModelAttribute ItemDTO itemDTO, BindingResult bindingResult,
-                                  HttpServletRequest httpServletRequest){
+                                  HttpServletRequest httpServletRequest) throws IOException {
 
         if(bindingResult.hasErrors()){
             return "itemview/additem";
@@ -43,9 +48,12 @@ public class ItemController {
         String setMakerId = httpSession.getAttribute(SessionName.LOGIN).toString();
 
         itemDTO.setMakerId(setMakerId);
-        log.info("itemInfo = {}",itemDTO);
-        addItemService.itemSave(itemDTO);
 
+        addItemService.itemSave(itemDTO);
+        List<String> itemImageName = itemImageStorage.itemImageFiles(itemDTO.getItemImageName());
+
+        addItemService.itemImageSave(itemDTO.getItemNum(),itemImageName);
+        log.info("itemInfo = {}",itemDTO);
         return "redirect:/";
     }
 }

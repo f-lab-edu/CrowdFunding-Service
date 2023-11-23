@@ -10,7 +10,6 @@ public class LoginInterceptor  implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                              Object handler) throws Exception {
 
-        String request = httpServletRequest.getRequestURI();
 
         HttpSession session = httpServletRequest.getSession(false);
         if(session == null || session.getAttribute("loginSession") == null){
