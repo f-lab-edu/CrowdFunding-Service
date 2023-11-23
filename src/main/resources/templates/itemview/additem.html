@@ -9,8 +9,7 @@
     <title>프로젝트 올리기</title>
 </head>
 <body>
-<form th:action th:object="${itemDTO}" method="post">
-    <input type="hidden">
+<form th:action th:object="${itemDTO}" method="post" enctype="multipart/form-data">
 
     <div>
         <label for="itemtitle">프로젝트명</label><br>
@@ -18,7 +17,7 @@
         <p th:errors="*{itemTitle}"></p>
     </div>
     <div>
-        이미지첨부<input type="file" multiple="multiple">
+        이미지첨부<input type="file" multiple="multiple" name="itemImageName">
     </div>
     <div>
         <label for="itemcontent">내용</label><br>

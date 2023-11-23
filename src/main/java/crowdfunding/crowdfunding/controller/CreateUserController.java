@@ -26,7 +26,7 @@ public class CreateUserController {
     }
 
     @PostMapping("/created")
-    public String userValid(@Valid @ModelAttribute CreateUserDTO createUserDTO, BindingResult bindingResult){
+    public String userValid(@Valid @ModelAttribute CreateUserDTO createUserDTO, BindingResult bindingResult) {
 
         ConfirmPassword confirmPassword = new ConfirmPassword();
 

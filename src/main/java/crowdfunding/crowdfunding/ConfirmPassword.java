@@ -1,11 +1,14 @@
 package crowdfunding.crowdfunding;
 
 
+import org.springframework.util.StringUtils;
+
 public class ConfirmPassword {
-    public boolean passwordValid(String password, String passwordValid){
-        if(!password.equals(passwordValid)){
-            return false;    
+
+    public boolean passwordValid(String password, String passwordCheck){
+        if(!(StringUtils.hasText(password)&&StringUtils.hasText(passwordCheck))){
+            return false;
         }
-        return true;
+        return password.equals(passwordCheck);
     }
 }
